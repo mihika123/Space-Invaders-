@@ -1,0 +1,106 @@
+Authors: Mihikaa Goenka(mg897),Oishani Ganguly(og58)
+Date: December 4th, 2018
+We implemented the following extensions in our game:-
+
+1. High score: This extension was implemented to record a high score which, if not
+              surpassed, remains constant for several rounds of the game even
+              if the terminal is closed and the game is restarted. For this,
+              we created a text file within the invaders folder (high.txt)
+              originally containing an integer 0 and used a function in app
+              with read and write methods to change the high score depending on the
+              performance of the player.
+
+2. Power-ups: This extension is used to create bolts of a different color
+              which are fired at intervals by the aliens such that when the
+              ship collides with these bolts, the player's score increases
+              by 40 instead of him/her losing a life. Thus these bolt objects
+              serve as power-ups. To implement this we used the random module to
+              ensure that there is a 1 in 10 chances that the aliens will fire a 
+	      power-up bolt. While checking for collisions we also
+              check for the linecolor and if it equals that of the power-ups,
+              the score is increased by 40.
+
+3. Dynamically increasing speed: This extension increases the speed of the
+                                aliens every time it moves down. For this we've
+                                changed the speed attribute of the aliens
+                                in our function which moves the aliens down.
+                                The speed decreases by 300th of the original 
+				speed every time the aliens move down, thus 
+				increasing the difficulty of the game.
+
+4. Manual-Pause,Resume,Quit: This extension allows the user to perform these
+                             functions by detecting key presses in particular game states.
+                             If the player presses any of the keys in the message
+                             displayed on screen, the functions in app change the state
+                             as desired. Say, if the player wants to pause the game in the active state- 
+			     he/she can do so at any time by pressing the 'p' key. 
+			     The state changes to paused and the player is prompted to
+                             resume by pressing r and so on. Similarly, the player
+                             can choose to quit at any time, and this is done when the
+                             function calls sys.exit() to exit the game.
+
+5. New Game with New Wave:   This extension allows the player to play the games several
+                             times by pressing n every time they win or lose and
+                             without having to type python invaders into the
+                             terminal every time. Whenever the player wins or loses, the
+                             corresponding message is displayed on the screen along
+                             with both their current score and the high score and the player is
+                             prompted to press n if they wish to start a new game, which
+                             in turn changes the state from STATE_COMPLETE OR STATE_WIN to
+                             STATE_ACTIVE and creates a new Wave, thus restarting the game.
+
+6. Mute by Clicking Icon:    This icon makes use of touch/click to detect the position of the
+                             mouse click on the screen. If the player clicks on the mute
+                             icon, the extension causes the active sounds of the
+                             game to mute. This however, cannot be used to resume
+                             the sound. Once, clicked, the sound remains muted for the
+                             entire duration of the current game. Sound resumes upon 
+			     starting a new game.
+                             Mute Icon: File Name-mute.png
+                                        Taken From: icon8.com
+                                        License: Free License, Public Domain
+
+7. Scores and Lives:         This extension is used to update the player's lives and score
+                             To make the game more interesting, we have
+                             ensured that firing at the aliens at the top fetches
+                             you more points than firing at the aliens at the bottom.
+                             We have divided the entire 2d-list into three sections and
+                             have updated scores depending on the row of the alien being
+                             fired at. Collision with power-ups also increases lives by 1 and
+                             collision with bolts decreases lives by 1. When the player has
+                             no lives left, the game state changes to STATE_COMPLETE and
+                             the player loses the game.
+
+8. Sounds:                  We have used sounds from among those provided to us.They are played
+                            when a bolt collides with an alien or a ship.
+                            Extra sounds:
+                                1. Aliens Marching: File Name-126347_latin_alienican.wav
+                                                    Taken From: Freesound.org website
+                                                    License: Public Domain
+                                                    
+                                2. Winning Game:    File Name-clap.wav
+                                                    Taken From: Freesound.org website
+                                                    License: Public Domain
+
+                                3. Losing Game:     File Name-over.wav
+                                                    Taken From: Freesound.org website
+                                                    License: Public Domain
+
+9. Animating Aliens:        To add more effects to the game we animated the aliens so that
+                            they appear to walk as the wave advances forward. For this we
+                            used the alienstrip sprites provided to us in the Images Folder.
+                            We made the superclass GSprite instead of GImage to implement
+                            this extension. 
+
+10. Space Background:       To create a background that looks like a black sky with
+                            celestial bodies in motion, we used a GRectangle Object
+                            with width and height equal to that of the window. 
+			    This creates the black sky. To create the celestial bodies,
+                            we used the random function to assign x and y values
+                            and determine the color of a 80 small GRectangle objects.
+                            Further, we used for-loops so these 80
+                            dot-like structures can be created and modified with
+                            every update in app.
+                               
+
+
